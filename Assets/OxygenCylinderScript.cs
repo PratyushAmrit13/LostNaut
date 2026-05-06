@@ -3,14 +3,18 @@ using TMPro;
 
 public class OxygenCylinderScript : MonoBehaviour
 {
-    private float OxygenCount;
+    private float OxygenCount = 10;
+    private float OxygenDeplete = 0.5f;
     public TextMeshProUGUI CountText;
-
     void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         {
             Destroy(gameObject);
+            OxygenCount++;
+            CountText.text = "Oxygen: " + OxygenCount;
         }
     }
+
+    
 }
