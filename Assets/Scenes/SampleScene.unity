@@ -25736,6 +25736,7 @@ GameObject:
   - component: {fileID: 944355452}
   - component: {fileID: 944355451}
   - component: {fileID: 944355455}
+  - component: {fileID: 944355456}
   m_Layer: 0
   m_Name: OxygenCylinder
   m_TagString: Untagged
@@ -25845,10 +25846,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 944355450}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da43abc7d7a74de4c89dd214871ffd80, type: 3}
+  m_Script: {fileID: 11500000, guid: 48e19f7837ea83044b3afc745397638d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OxygenCylinderScript
-  CountText: {fileID: 1577231423}
+  oxygen: 200
+  oxygenDrainPerSecond: 1
+  oxygenText: {fileID: 1577231423}
+--- !u!114 &944355456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944355450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb529e1f01408504f8f487618e20a40a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OxygenCylinderScript
+  oxygenAmount: 150
 --- !u!1001 &947777619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34067,6 +34083,7 @@ GameObject:
   - component: {fileID: 1284300799}
   - component: {fileID: 1284300802}
   - component: {fileID: 1284300801}
+  - component: {fileID: 1284300803}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -34110,7 +34127,7 @@ Transform:
   m_GameObject: {fileID: 1284300798}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.6, y: 9.2, z: -24.1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -34309,6 +34326,21 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1284300803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284300798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e19f7837ea83044b3afc745397638d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerOxygen
+  oxygen: 200
+  oxygenDrainPerSecond: 1
+  oxygenText: {fileID: 1577231423}
 --- !u!1001 &1284797825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41413,7 +41445,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Oxygen: 10'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
