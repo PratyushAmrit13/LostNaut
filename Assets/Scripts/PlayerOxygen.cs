@@ -5,6 +5,7 @@ public class PlayerOxygen : MonoBehaviour
 {
     public float oxygen = 200f;
     public float oxygenDrainPerSecond = 1f;
+    private float maxOxygen = 200f;
     public TextMeshProUGUI oxygenText;
     public OxygenBarScript oxygenBar;
 
@@ -26,7 +27,7 @@ public class PlayerOxygen : MonoBehaviour
 
     public void AddOxygen(float amount)
     {
-        oxygen += amount;
+        oxygen = Mathf.Min(oxygen+amount , maxOxygen);
         UpdateUI();
     }
 
