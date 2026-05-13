@@ -65,11 +65,18 @@ public class TestScript : MonoBehaviour
     }
     
     private void ApplyMovement()
-    {
-        var targetSpeed = movement.isSprinting ? movement.speed * movement.multiplier : movement.speed;
-        movement.currentSpeed = Mathf.MoveTowards(movement.currentSpeed , targetSpeed , movement.accleration * Time.deltaTime);
-        _characterController.Move(_direction * movement.currentSpeed * Time.deltaTime);
-    }
+{
+    Vector3 move = transform.right * _input.x + transform.forward * _input.y;
+    Vector3 horizontalDirection = new Vector3(move.x, 0.0f, move.z).normalized;
+
+    _direction.x = horizontalDirection.x;
+    _direction.z = horizontalDirection.z;
+
+    var targetSpeed = movement.isSprinting ? movement.speed * movement.multiplier : movement.speed;
+    movement.currentSpeed = Mathf.MoveTowards(movement.currentSpeed, targetSpeed, movement.accleration * Time.deltaTime);
+
+    _characterController.Move(_direction * movement.currentSpeed * Time.deltaTime);
+}
 
     private void ApplyCrouch()
 {
@@ -83,11 +90,9 @@ public class TestScript : MonoBehaviour
 }
 
     public void Move(InputAction.CallbackContext context)
-    {
-        _input = context.ReadValue<Vector2>();
-        Vector3 move = transform.right * _input.x + transform.forward * _input.y;
-        _direction = new Vector3(move.x, 0.0f, move.z);
-    }
+{
+    _input = context.ReadValue<Vector2>();
+}
 
     public void OnJump(InputAction.CallbackContext context)
     {
